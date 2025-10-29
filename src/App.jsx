@@ -1,20 +1,27 @@
-import { useState } from "react";
-import { Excalidraw } from "@excalidraw/excalidraw";
-import "@excalidraw/excalidraw/index.css";
+import { useState, useEffect } from 'react'
+import { Excalidraw } from '@excalidraw/excalidraw'
+import '@excalidraw/excalidraw/index.css'
+import Loading from './Loading.jsx'
 
-function App() {
-  const themeDarkQuery = window.matchMedia("(prefers-color-scheme: dark)");
-  const [theme, setTheme] = useState(themeDarkQuery.matches ? "dark" : "light");
+function App () {
+  const themeDarkQuery = window.matchMedia('(prefers-color-scheme: dark)')
+  const [theme, setTheme] = useState(themeDarkQuery.matches ? 'dark' : 'light')
 
-  themeDarkQuery.addEventListener("change", (mediaQueryListEvent) => {
-    setTheme(mediaQueryListEvent.matches ? "dark" : "light");
-  });
+  themeDarkQuery.addEventListener('change', (mediaQueryListEvent) => {
+    setTheme(mediaQueryListEvent.matches ? 'dark' : 'light')
+  })
+
+  const [loading, setLoading] = useState(true)
+
+  useEffect(() => {
+    setLoading(false)
+  }, [])
 
   return (
-    <div style={{ height: "100dvh" }}>
-      <Excalidraw theme={theme} />
+    <div style={{ height: '100dvh' }}>
+      {loading ? <Loading /> : <Excalidraw theme={theme} />}
     </div>
-  );
+  )
 }
 
-export default App;
+export default App
