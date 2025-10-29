@@ -18,9 +18,7 @@ function App () {
   }, [])
 
   return (
-    <div style={{ height: '100dvh' }}>
-      {loading ? <Loading /> : <Excalidraw theme={theme} />}
-    </div>
+    loading ? <Loading /> : <Excalidraw theme={theme} />
   )
 }
 
