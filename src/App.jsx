@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react'
+import { useState } from 'react'
 import { Excalidraw } from '@excalidraw/excalidraw'
 import '@excalidraw/excalidraw/index.css'
 import Loading from './Loading.jsx'
@@ -11,14 +11,8 @@ function App () {
     setTheme(mediaQueryListEvent.matches ? 'dark' : 'light')
   })
 
-  const [loading, setLoading] = useState(true)
-
-  useEffect(() => {
-    setLoading(false)
-  }, [])
-
   return (
-    loading ? <Loading /> : <Excalidraw theme={theme} />
+    <Excalidraw theme={theme} />
   )
 }
 
